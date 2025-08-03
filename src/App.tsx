@@ -1,35 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import LinkForm from './components/LinkForm/LinkForm';
+import LinkList from './components/LinkList/LinkList';
+import SearchBar from './components/SearchBar/SearchBar';
+import type { Link } from './types';
+import styles from './App.module.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [links, setLinks] = useState<Link[]>([]);
+  const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
+  const [linkToEdit, setLinkToEdit] = useState<Link | undefined>(undefined);
+
+  // Load links from localStorage on mount
+  useEffect(() => {
+    const savedLinks = localStorage.getItem('links');
+    if (savedLinks) {
+      const parsedLinks: Link[] = JSON.parse(savedLinks);
+      setLinks(parsedLinks);
+      setFilteredLinks(parsedLinks);
+    }
+  }, []);
+
+  // Save links to localStorage whenever links change
+  useEffect(() => {
+    localStorage.setItem('links', JSON.stringify(links));
+    setFilteredLinks(links);
+  }, [links]);
+
+  const handleSave = (link: Link) => {
+    if (linkToEdit) {
+      // Update existing link
+      setLinks(links.map((l) => (l.id === link.id ? link : l)));
+      setLinkToEdit(undefined);
+    } else {
+      // Add new link
+      setLinks([...links, link]);
+    }
+  };
+
+  const handleEdit = (link: Link) => {
+    setLinkToEdit(link);
+  };
+
+  const handleDelete = (id: string) => {
+    setLinks(links.filter((link) => link.id !== id));
+  };
+
+  const handleSearch = (query: string) => {
+    const lowerQuery = query.toLowerCase();
+    setFilteredLinks(
+      links.filter(
+        (link) =>
+          link.title.toLowerCase().includes(lowerQuery) ||
+          link.url.toLowerCase().includes(lowerQuery) ||
+          link.description.toLowerCase().includes(lowerQuery) ||
+          link.tags.some((tag) => tag.toLowerCase().includes(lowerQuery))
+      )
+    );
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className={styles.app}>
+      <h1>Links Vault</h1>
+      <LinkForm onSave={handleSave} linkToEdit={linkToEdit} />
+      <SearchBar onSearch={handleSearch} />
+      <LinkList links={filteredLinks} onEdit={handleEdit} onDelete={handleDelete} />
+    </div>
+  );
+};
 
-export default App
+export default App;
