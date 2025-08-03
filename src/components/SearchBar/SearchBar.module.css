@@ -1,0 +1,22 @@
+.searchContainer {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  .searchContainer {
+    padding: 0 15px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+  }
+}
