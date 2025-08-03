@@ -1,69 +1,70 @@
-# React + TypeScript + Vite
+# 📚 React Links Vault
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, responsive web application to help users keep track of their favorite links — similar to a bookmark manager, but stored in the browser using `localStorage`.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Objective
 
-## Expanding the ESLint configuration
+This project demonstrates understanding and application of:
+- Array & object methods
+- React components, props, and state
+- useState & other React hooks
+- JSON object methods
+- Browser `localStorage` for persistence
+- Responsive web design with plain CSS
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📘 Scenario
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+The app allows users to:
+- Add links they want to save
+- View and manage saved links
+- Edit/update or delete existing entries
+- Search links by title, description, tags, or URL
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+All data is stored in the browser using `localStorage` (no backend required for this MVP).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🧩 Features
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### ✅ Interface
+- Clean, user-friendly layout
+- Responsive design (mobile → desktop)
+- Aesthetic color scheme and intuitive layout
+- Input fields for:
+  - Title
+  - URL
+  - Description
+  - Tags (comma-separated)
+
+### ✅ Functionality (CRUD)
+- ➕ Create (Add) new links
+- 📖 Read (View) saved links
+- ✏️ Update/Edit existing links
+- ❌ Delete links
+- 🔍 Search functionality by:
+  - Title
+  - Description
+  - URL
+  - Tags
+
+### ✅ Persistence
+- Data is saved in browser `localStorage`
+
+---
+
+## 🛠 Technologies Used
+
+- [React.js](https://reactjs.org/)
+- Plain CSS (no third-party libraries)
+- JavaScript (ES6+)
+- HTML5
+
+---
+
+## Host link
+### 
+
