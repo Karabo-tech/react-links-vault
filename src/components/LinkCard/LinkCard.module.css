@@ -1,0 +1,75 @@
+.card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.link {
+  color: #007bff;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.tags {
+  margin: 10px 0;
+}
+
+.tag {
+  display: inline-block;
+  background: #e0e0e0;
+  padding: 5px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editButton,
+.deleteButton {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.editButton {
+  background: #28a745;
+  color: white;
+}
+
+.editButton:hover {
+  background: #218838;
+}
+
+.deleteButton {
+  background: #dc3545;
+  color: white;
+}
+
+.deleteButton:hover {
+  background: #c82333;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 10px;
+  }
+
+  .editButton,
+  .deleteButton {
+    width: 100%;
+    text-align: center;
+  }
+}
