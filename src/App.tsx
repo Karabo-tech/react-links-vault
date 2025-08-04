@@ -10,7 +10,6 @@ const App: React.FC = () => {
   const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
   const [linkToEdit, setLinkToEdit] = useState<Link | undefined>(undefined);
 
-  // Load links from localStorage on mount
   useEffect(() => {
     const savedLinks = localStorage.getItem('links');
     if (savedLinks) {
@@ -20,7 +19,6 @@ const App: React.FC = () => {
     }
   }, []);
 
-  // Save links to localStorage whenever links change
   useEffect(() => {
     localStorage.setItem('links', JSON.stringify(links));
     setFilteredLinks(links);
@@ -28,11 +26,9 @@ const App: React.FC = () => {
 
   const handleSave = (link: Link) => {
     if (linkToEdit) {
-      // Update existing link
       setLinks(links.map((l) => (l.id === link.id ? link : l)));
       setLinkToEdit(undefined);
     } else {
-      // Add new link
       setLinks([...links, link]);
     }
   };
